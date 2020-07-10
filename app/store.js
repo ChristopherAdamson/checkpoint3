@@ -18,6 +18,10 @@ function _loadState() {
 _loadState();
 
 class Store {
+  addList(newList) {
+    _state.lists.push(newList);
+    console.log(_state.lists);
+  }
   /**
    * Provides access to application state data
    */
