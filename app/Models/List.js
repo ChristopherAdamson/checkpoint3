@@ -3,7 +3,7 @@ import { generateId } from "../utils.js";
 export default class List {
   constructor(data) {
     //TODO Your constructor takes in a data object that should have the properties you need to create your list here is a freebie, it will set the id its provided, or if that is undefined it will create a new one (this is an alternative to object destructuring)
-    this.id = data.id || generateId();
+    this.Id = data.Id || generateId();
     // turn the load back  into class's if you want
     this.name = data.name || "Unnamed list"
     /**@type {string[]} */
@@ -18,9 +18,9 @@ export default class List {
     let template =  /*html*/ `
     <div class="col-4 p-0 bg-white">
     <div class="">
-      <button class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button>
+      <button onclick="deleteList()" class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button>
       <h3 class="text-center">${this.name}</h3>
-      <form onsubmit="app.listController.addTask(event)" class="form-inline">
+      <form onsubmit="app.listController.addTask(event, '${this.Id}')" class="form-inline">
         <div class="form-group">
           <label for="taskName"></label>
           <input type="text" name="taskName" class="form-control w-75" placeholder="Add a task.">
@@ -35,7 +35,7 @@ export default class List {
     this.tasks.forEach(task => template += /*html*/ `  <div class="bg-secondary p-1">
 <ul>
   <li>
-    <p>${this.task} <button class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button></p>
+    <p>${task} <button class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button></p>
   </li>
 </ul>
 </div>

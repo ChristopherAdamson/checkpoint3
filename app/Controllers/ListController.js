@@ -20,23 +20,27 @@ export default class ListController {
     let listName = {
       name: formData.listName.value
     }
-    console.log(listName);
     ListService.addList(listName)
+    event.target.reset()
     _drawLists()
 
   }
+  deleteList() {
 
-  addTask(event) {
+  }
+
+  addTask(event, listId) {
     event.preventDefault()
-    let formData = event.target
-    let taskName = {
-      name: formData.taskName.value
-    }
-    console.log(taskName);
-    ListService.addtask(taskName)
+    let formData = event.target.taskName.value
+    console.log(formData);
+    ListService.addtask(formData, listId)
+    event.target.reset()
     _drawLists()
   }
 
+  deleteTask() {
+
+  }
 
 
   //TODO: Your app will need the ability to create, and delete both lists and listItems

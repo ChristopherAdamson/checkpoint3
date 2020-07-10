@@ -18,6 +18,10 @@ function _loadState() {
 _loadState();
 
 class Store {
+  addTask(foundListIndex, taskName) {
+    _state.lists[foundListIndex].tasks.push(taskName)
+
+  }
   addList(newList) {
     _state.lists.push(newList);
     console.log(_state.lists);

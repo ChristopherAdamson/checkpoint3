@@ -3,11 +3,7 @@ import _store from "../store.js"
 
 //Public
 class ListService {
-  addtask(taskName) {
-    throw new Error("Method not implemented.");
-  }
   constructor() {
-    console.log("hello from ListService");
   }
   //TODO  Here is where we handle all of our business logic,
   //given the information you need in the controller,
@@ -17,6 +13,16 @@ class ListService {
     let newList = new List(listName)
     console.log(newList);
     _store.addList(newList)
+    // _store.saveState()
+  }
+  addtask(taskName, listId) {
+    console.log(listId);
+    let foundListIndex = _store.State.lists.findIndex(list => list.Id == listId)
+    if (foundListIndex < 0) {
+      console.error("cannot find list");
+      return
+    }
+    _store.addTask(foundListIndex, taskName)
     // _store.saveState()
   }
 }
