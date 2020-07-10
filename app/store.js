@@ -18,6 +18,7 @@ function _loadState() {
 _loadState();
 
 class Store {
+
   addTask(foundListIndex, taskName) {
     _state.lists[foundListIndex].tasks.push(taskName)
 
@@ -25,6 +26,14 @@ class Store {
   addList(newList) {
     _state.lists.push(newList);
     console.log(_state.lists);
+  }
+  deleteList(listId) {
+    let indexToRemove = _state.lists.findIndex(list => list.Id = listId)
+    if (indexToRemove < 0) {
+      console.error("invalid list");
+      return
+    }
+    _state.lists.splice(indexToRemove, 1)
   }
   /**
    * Provides access to application state data

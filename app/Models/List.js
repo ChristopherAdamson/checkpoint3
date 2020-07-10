@@ -18,7 +18,7 @@ export default class List {
     let template =  /*html*/ `
     <div class="col-4 p-0 bg-white">
     <div class="">
-      <button onclick="deleteList()" class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button>
+      <button onclick="app.listController.deleteList('${this.Id}')" class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button>
       <h3 class="text-center">${this.name}</h3>
       <form onsubmit="app.listController.addTask(event, '${this.Id}')" class="form-inline">
         <div class="form-group">
@@ -35,7 +35,7 @@ export default class List {
     this.tasks.forEach(task => template += /*html*/ `  <div class="bg-secondary p-1">
 <ul>
   <li>
-    <p>${task} <button class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button></p>
+    <p>${task} <button onclick=""app.listController.deleteTask(${task})" class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button></p>
   </li>
 </ul>
 </div>

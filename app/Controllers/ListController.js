@@ -25,8 +25,9 @@ export default class ListController {
     _drawLists()
 
   }
-  deleteList() {
-
+  deleteList(listId) {
+    ListService.deleteList(listId)
+    _drawLists()
   }
 
   addTask(event, listId) {

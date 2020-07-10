@@ -25,6 +25,15 @@ class ListService {
     _store.addTask(foundListIndex, taskName)
     // _store.saveState()
   }
+
+  deleteList(listId) {
+    let validator = window.confirm("are you sure you want to delete this?")
+    if (validator)
+      _store.deleteList(listId)
+  }
+
+
+
 }
 
 const SERVICE = new ListService();
