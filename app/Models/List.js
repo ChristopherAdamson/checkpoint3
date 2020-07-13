@@ -30,7 +30,7 @@ export default class List {
         </div>
       </form>
       `
-    this.tasks.forEach((task, taskIndex) => template += `  <div class="d-flex justify-content-between align-items-center bg-white mb-2 mt-1 rounded "> <span class="line flex-fill "> <input type="checkbox" aria-label="Checkbox for following text input">
+    this.tasks.forEach((task, taskIndex) => template += `  <div class="d-flex justify-content-between align-items-center bg-white mb-2 mt-1 rounded cus-font "> <span class="line flex-fill "> <input type="checkbox" aria-label="Checkbox for following text input">
     <h5>${task}</h5> <button class="btn btn-danger d-flex justify-content-end"
       onclick="app.listController.deleteTask('${this.Id}', '${taskIndex}')"><i class="fa fa-trash-o big-font"></i></button>
   </span> </div>  `)
