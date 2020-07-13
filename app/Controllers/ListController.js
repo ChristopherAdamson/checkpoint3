@@ -18,7 +18,8 @@ export default class ListController {
     event.preventDefault()
     let formData = event.target
     let listName = {
-      name: formData.listName.value
+      name: formData.listName.value,
+      color: formData.color.value
     }
     ListService.addList(listName)
     event.target.reset()
@@ -36,10 +37,14 @@ export default class ListController {
     console.log(formData);
     ListService.addtask(formData, listId)
     event.target.reset()
+
     _drawLists()
   }
 
-  deleteTask() {
+  deleteTask(listId, taskIndex) {
+    console.log(taskIndex);
+    ListService.deleteTask(listId, taskIndex)
+    _drawLists()
 
   }
 

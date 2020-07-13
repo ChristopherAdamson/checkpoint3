@@ -3,6 +3,7 @@ import _store from "../store.js"
 
 //Public
 class ListService {
+
   constructor() {
   }
   //TODO  Here is where we handle all of our business logic,
@@ -13,28 +14,40 @@ class ListService {
     let newList = new List(listName)
     console.log(newList);
     _store.addList(newList)
-    // _store.saveState()
+    _store.saveState()
+  }
+
+  deleteList(listId) {
+    console.log(listId);
+    let validator = window.confirm("Are you sure you want to delete this?")
+    if (validator)
+      _store.deleteList(listId)
   }
   addtask(taskName, listId) {
     console.log(listId);
+
     let foundListIndex = _store.State.lists.findIndex(list => list.Id == listId)
     if (foundListIndex < 0) {
       console.error("cannot find list");
       return
     }
     _store.addTask(foundListIndex, taskName)
-    // _store.saveState()
-  }
-
-  deleteList(listId) {
-    let validator = window.confirm("are you sure you want to delete this?")
-    if (validator)
-      _store.deleteList(listId)
+    _store.saveState()
   }
 
 
+  deleteTask(listId, taskIndex) {
+    let validator = window.confirm("Are you sure you want to delete this Task?")
+    if (validator) {
+      _store.deleteTask(listId, taskIndex)
+
+    }
+  }
 
 }
+
+
+
 
 const SERVICE = new ListService();
 export default SERVICE;

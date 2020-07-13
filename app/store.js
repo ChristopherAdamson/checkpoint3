@@ -18,22 +18,35 @@ function _loadState() {
 _loadState();
 
 class Store {
+  deleteTask(listId, taskIndex) {
 
+    console.log(taskIndex);
+    console.log(listId);
+    let list = _state.lists.find(l => l.Id == listId)
+    list.tasks.splice(taskIndex, 1)
+    console.log(list.tasks);
+    this.saveState()
+  }
   addTask(foundListIndex, taskName) {
     _state.lists[foundListIndex].tasks.push(taskName)
 
   }
+
+
+
+
+
   addList(newList) {
     _state.lists.push(newList);
-    console.log(_state.lists);
   }
   deleteList(listId) {
-    let indexToRemove = _state.lists.findIndex(list => list.Id = listId)
+    let indexToRemove = _state.lists.findIndex(list => list.Id == listId)
     if (indexToRemove < 0) {
       console.error("invalid list");
       return
     }
     _state.lists.splice(indexToRemove, 1)
+    this.saveState()
   }
   /**
    * Provides access to application state data

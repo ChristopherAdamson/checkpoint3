@@ -18,12 +18,22 @@
       <div class="col-12 text-center">
         <h1>TaskMaster!</h1>
         <div class="row justify-content-center">
-          <div class="col-12">
-            <form class=" form-inline w-25" onsubmit="app.listController.addList(event)">
+          <div class="col-4 pb-3">
+            <form class=" form-inline " onsubmit="app.listController.addList(event)">
               <div class="form-group">
-                <label for="listName"></label>
-                <input type="text" name="listName" class="form-control" placeholder="Name your list.">
-                <button type="submit" class="btn btn-success">Submit List</button type>
+                <span>
+                  <label for="listName"></label>
+                  <input type="text" name="listName" class="form-control" placeholder="Name your list.">
+                  <select class="custom-select" name="color" required>
+                    <option value="whiter">Color?</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="red">Red</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="purple">Purple</option>
+                  </select>
+                  <button type="submit" class="btn btn-success">Submit List</button>
+                </span>
               </div>
             </form>
           </div>
@@ -33,32 +43,10 @@
   </header>
 
   <main class="container-fluid bg-img">
-    <div id="lists" class="row p-3">
-      <!-- <div class="col-4 p-0 bg-white">
-        <div class="">
-          <button class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button>
-          <h3 class="text-center">List name</h3>
-          <form onsubmit="" class="form-inline">
-            <div class="form-group">
-              <label for="taskName"></label>
-              <input type="text" name="taskName" class="form-control w-75" placeholder="Add a task.">
-              <button type="submit" class="btn btn-success">Add Task!</button type>
-            </div>
-          </form>
-        </div>
-        <div class="bg-secondary p-1">
-          <ul>
-            <li>
-              <p>some tasks <button class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button></p>
-            </li>
-          </ul>
-        </div> -->
-    </div>
+    <div id="lists" class="row justify-content-center ">
+
     </div>
   </main>
-
-
-
 
 
   <footer class="contatiner-fluid ">

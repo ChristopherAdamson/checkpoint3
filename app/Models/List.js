@@ -6,6 +6,7 @@ export default class List {
     this.Id = data.Id || generateId();
     // turn the load back  into class's if you want
     this.name = data.name || "Unnamed list"
+    this.color = data.color || "whiter"
     /**@type {string[]} */
     this.tasks = data.tasks || []
 
@@ -16,31 +17,77 @@ export default class List {
 
   get ListTemplate() {
     let template =  /*html*/ `
-    <div class="col-4 p-0 bg-white">
-    <div class="">
-      <button onclick="app.listController.deleteList('${this.Id}')" class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button>
-      <h3 class="text-center">${this.name}</h3>
+    <div class="col-3 mr-5 box-shadow rounded bg-${this.color} mt-4 ">
+    <span class="">
+    <button onclick="app.listController.deleteList('${this.Id}')" class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button>
+    <h3 class="text-center">${this.name}</h3>
+      </span>
       <form onsubmit="app.listController.addTask(event, '${this.Id}')" class="form-inline">
-        <div class="form-group">
+        <div class="form-group ">
           <label for="taskName"></label>
-          <input type="text" name="taskName" class="form-control w-75" placeholder="Add a task.">
+          <input type="text" name="taskName" class="form-control " placeholder="Add a task.">
           <button type="submit" class="btn btn-success">Add Task!</button type>
         </div>
       </form>
-    
+      `
+    this.tasks.forEach((task, taskIndex) => template += `  <div class="d-flex justify-content-between align-items-center bg-white mb-2 mt-1 rounded "> <span class="line flex-fill "> <input type="checkbox" aria-label="Checkbox for following text input">
+    <h5>${task}</h5> <button class="btn btn-danger d-flex justify-content-end"
+      onclick="app.listController.deleteTask('${this.Id}', '${taskIndex}')"><i class="fa fa-trash-o big-font"></i></button>
+  </span> </div>  `)
 
-`
-
-
-    this.tasks.forEach(task => template += /*html*/ `  <div class="bg-secondary p-1">
-<ul>
-  <li>
-    <p>${task} <button onclick=""app.listController.deleteTask(${task})" class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></button></p>
-  </li>
-</ul>
-</div>
-</div>`)
-    template += `</div>`
+    template += ` </div>`
     return template
   }
+
+
+  // get TasksTemplate() {
+  //   let template = ""
+
+
+  //   this.tasks.forEach((task, taskIndex) => template += /*html*/ `
+  //     <li class="list-group-item listItemsSpacing">
+  //     <span>
+  //       <input type="checkbox" aria-label="Checkbox for following text input">
+  //       ${this.tasks[taskIndex]}
+  //     </span>
+  //     <span>
+  //       <button class="btn btn-danger" onclick="app.listController.deleteTask('${this.Id}', '${taskIndex}')">Del</button>
+  //     </span>
+  //   </li>
+  //     `
+  //   )
+  //   return template
+  // }
+
+
+
+
+
+
+  // get Template() {
+
+  //   let template = /* html */ `
+  //       <div class="col-3">
+  //                   <h1>${this.name}</h1>
+  //                   <form onsubmit="app.pizzasController.addTopping(event, '${this.id}')">
+  //                       <div class="form-group">
+  //                           <label for="toppingName">Topping Name</label>
+  //                           <input type="text" name="toppingName" class="form-control" placeholder="Enter Topping Name...">
+  //                       </div>
+  //                       <button type="submit" class="btn btn-outline-success">Add Topping</button>
+  //                   </form>
+  //                   `
+
+  //   this.toppings.forEach(topping => template += `<p>${topping}</p>`)
+
+  //   template += '</div>'
+
+  //   return template
+  // }
+
+
+
+
+
 }
+
